@@ -252,6 +252,45 @@ pub fn reset_for_next_round(room: &mut Room) {
     }
 }
 
+// --- Room lifecycle helpers used by tests / API ---
+
+pub fn create_room(id: &str, name: &str, host_name: &str, max_players: usize) -> Room {
+    let host = Player {
+        id: "player-1".to_string(),
+        name: host_name.to_string(),
+        is_host: true,
+        ready: false,
+    };
+    Room::new(id, name, host, max_players)
+}
+
+pub fn join_room(room: &mut Room, player_name: &str) -> Result<String, String> {
+    if room.players.len() >= room.max_players {
+        return Err("room full".into());
+    }
+    let id = format!("player-{}", room.players.len() + 1);
+    let p = Player {
+        id: id.clone(),
+        name: player_name.to_string(),
+        is_host: false,
+        ready: false,
+    };
+    room.players.push(p);
+    Ok(id)
+}
+
+pub fn set_player_ready(room: &mut Room, player_id: &str, ready: bool) -> Result<(), String> {
+    room.set_ready(player_id, ready)
+}
+
+pub fn start_game(room: &mut Room) -> Result<(), String> {
+    if !room.all_ready() {
+        return Err("not all ready".into());
+    }
+    room.state = GameState::SeedSelection;
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
