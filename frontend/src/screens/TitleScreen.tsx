@@ -25,7 +25,7 @@ function TitleScreen({ onStart }: TitleScreenProps) {
       <div className="title-top-half">
         <img
           className="title-logo"
-          src="/PassTheAux.png"
+          src="/images/PassTheAux.png"
           alt="PassTheAux"
         />
       </div>

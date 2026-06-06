@@ -8,7 +8,7 @@ src: url("../assets/fonts/Sweetpaint.ttf") format("truetype");
 .title-screen {
   width: 100vw;
   height: 100vh;
-  background-image: url("/Background.png");
+  background-image: url("/images/Background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

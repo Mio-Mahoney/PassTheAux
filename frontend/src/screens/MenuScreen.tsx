@@ -32,15 +32,15 @@ function MenuScreen({
     <div className="menu-screen">
       <div className="menu-button-column">
         <button className="image-menu-button" onClick={onHost}>
-          <img src="/Host.png" alt="Host" />
+          <img src="/images/Host.png" alt="Host" />
         </button>
 
         <button className="image-menu-button join-button" onClick={onJoin}>
-          <img src="/Join.png" alt="Join" />
+          <img src="/images/Join.png" alt="Join" />
         </button>
 
         <button className="image-menu-button" onClick={onHowToPlay}>
-          <img src="/HowToPlay.png" alt="How to Play" />
+          <img src="/images/HowToPlay.png" alt="How to Play" />
         </button>
       </div>
     </div>

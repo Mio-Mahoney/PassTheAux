@@ -19,7 +19,7 @@ function TutorialScreen({ onBack }: TutorialScreenProps) {
           </div>
 
           <button className="tutorial-back-button" onClick={onBack}>
-            <img src="/Back.png" alt="Back" />
+            <img src="/images/Back.png" alt="Back" />
           </button>
         </div>
       </div>
