@@ -1,0 +1,96 @@
+.tutorial-screen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+}
+
+.tutorial-content {
+  width: min(92vw, 1000px);
+  height: min(78vh, 680px);
+
+  background-image: url("/BoxHorizontal.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4rem 6rem;
+}
+
+.tutorial-inner {
+  width: 82%;
+  height: 72%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-title {
+  margin: 0 0 1rem 0;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0px black;
+  line-height: 2;
+}
+
+.tutorial-box {
+  width: 100%;
+  max-width: 900px;
+
+  font-size: clamp(0.80rem, 1.8vw, 1.6rem);
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0px black;
+}
+
+.tutorial-box p {
+  margin: 0 0 0.45rem 0;
+}
+
+.tutorial-back-button {
+  margin-top: -2.0rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.tutorial-back-button img {
+  width: min(50vw, 300px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.tutorial-back-button:hover {
+  transform: scale(1.06);
+  filter: brightness(1.15);
+}
+
+.tutorial-back-button:active {
+  transform: scale(0.96);
+}
