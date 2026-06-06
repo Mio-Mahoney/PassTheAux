@@ -1,0 +1,224 @@
+.mode-selection-screen {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("/images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+}
+
+.mode-selection-wrapper {
+  width: min(92vw, 1200px);
+  height: min(86vh, 760px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 4rem);
+}
+
+.mode-card {
+  width: min(42vw, 480px);
+  height: min(82vh, 720px);
+
+  background-image: url("/images/BoxVertical.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-card-inner {
+  width: 76%;
+  height: 78%;
+
+  display: grid;
+  grid-template-rows: 1.2fr 0.9fr 0.7fr 0.8fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.mode-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.classic-title-image {
+  width: min(28vw, 320px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.mode-description {
+  margin: 0;
+
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  color: white;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0px black;
+}
+
+.rounds-heading {
+  margin: 0;
+
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0px black;
+}
+
+.rounds-row {
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.round-button {
+  width: clamp(3rem, 5vw, 4.5rem);
+  height: clamp(3rem, 5vw, 4.5rem);
+
+  border: 4px solid black;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease, background-color 0.18s ease;
+}
+
+.round-button:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.round-button:active {
+  transform: scale(0.95);
+}
+
+.selected-round {
+  background-color: #1db954;
+  color: white;
+}
+
+.create-lobby-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.create-lobby-button img {
+  width: min(30vw, 330px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.create-lobby-button:hover {
+  transform: scale(1.06);
+  filter: brightness(1.15);
+}
+
+.create-lobby-button:active {
+  transform: scale(0.96);
+}
+
+.coming-soon-inner {
+  display: grid;
+  grid-template-rows: 1fr 0.6fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.coming-soon-text {
+  margin: 0;
+
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  color: white;
+  text-align: center;
+  line-height: 1.15;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0px black;
+}
+
+.mode-back-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.mode-back-button img {
+  width: min(28vw, 220px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.mode-back-button:hover {
+  transform: scale(1.06);
+  filter: brightness(1.15);
+}
+
+.mode-back-button:active {
+  transform: scale(0.96);
+}
+
+/* Keeps the two cards usable on smaller widths */
+@media (max-width: 800px) {
+  .mode-selection-wrapper {
+    flex-direction: column;
+    height: 94vh;
+    gap: 1rem;
+  }
+
+  .mode-card {
+    width: min(90vw, 440px);
+    height: 45vh;
+  }
+
+  .mode-card-inner {
+    height: 76%;
+  }
+
+  .classic-title-image {
+    width: min(50vw, 260px);
+  }
+
+  .create-lobby-button img {
+    width: min(55vw, 280px);
+  }
+}
