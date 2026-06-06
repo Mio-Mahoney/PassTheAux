@@ -1,5 +1,7 @@
 #![allow(dead_code)]
 
+pub mod server;
+
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::env;
