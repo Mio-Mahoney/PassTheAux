@@ -1,0 +1,152 @@
+.leaderboard-screen {
+  width: 100vw;
+  min-height: 100vh;
+
+  background-image: url("/images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+  color: white;
+}
+
+.leaderboard-panel {
+  width: min(92vw, 1160px);
+  min-height: min(84vh, 780px);
+
+  background-image: url("/images/BoxHorizontal.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: clamp(3rem, 6vw, 5rem) clamp(3rem, 7vw, 7rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  text-shadow: 2px 2px 0 black;
+}
+
+.leaderboard-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.leaderboard-top-row h1,
+.leaderboard-top-row p,
+.leaderboard-grid h2 {
+  margin: 0;
+}
+
+.leaderboard-top-row h1 {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 1;
+}
+
+.leaderboard-top-row p {
+  color: #1db954;
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
+
+.leaderboard-back-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.leaderboard-back-button img {
+  width: min(22vw, 180px);
+  height: auto;
+  display: block;
+}
+
+.leaderboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.leaderboard-grid section {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.leaderboard-grid h2 {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+
+  padding: 0.55rem 0.7rem;
+  border: 2px solid rgba(29, 185, 84, 0.72);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.46);
+
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.leaderboard-row span,
+.leaderboard-row strong {
+  min-width: 0;
+}
+
+.leaderboard-row small {
+  display: block;
+  color: #1db954;
+  font-size: 0.72em;
+}
+
+.leaderboard-action {
+  width: fit-content;
+  align-self: flex-end;
+  padding: 0.65rem 1.2rem;
+
+  border: 3px solid white;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  cursor: pointer;
+}
+
+@media (max-width: 820px) {
+  .leaderboard-panel {
+    min-height: 88vh;
+    padding: 3rem 2.5rem;
+  }
+
+  .leaderboard-top-row,
+  .leaderboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboard-top-row {
+    flex-direction: column;
+  }
+
+  .leaderboard-back-button img {
+    width: min(46vw, 180px);
+  }
+}

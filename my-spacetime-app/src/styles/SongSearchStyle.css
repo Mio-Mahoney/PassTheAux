@@ -1,0 +1,215 @@
+.song-search-screen {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("/images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+  color: white;
+}
+
+.song-search-panel {
+  width: min(92vw, 1100px);
+  min-height: min(78vh, 720px);
+
+  background-image: url("/images/BoxHorizontal.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: clamp(3rem, 6vw, 5rem) clamp(3rem, 7vw, 7rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.song-search-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.song-search-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 1;
+  text-shadow: 3px 3px 0 black;
+}
+
+.song-search-back-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.song-search-back-button img {
+  width: min(22vw, 190px);
+  height: auto;
+  display: block;
+}
+
+.song-search-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.song-search-input,
+.song-search-prompt {
+  min-width: 0;
+  padding: 0.8rem 1rem;
+
+  border: 3px solid #1db954;
+  border-radius: 8px;
+  background: rgba(18, 18, 18, 0.9);
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+}
+
+.song-search-input {
+  flex: 1;
+}
+
+.song-search-prompt {
+  width: min(100%, 520px);
+}
+
+.song-search-submit {
+  padding: 0.8rem 1.4rem;
+
+  border: 3px solid white;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  cursor: pointer;
+}
+
+.song-search-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.song-search-start-round {
+  width: fit-content;
+  padding: 0.6rem 1.2rem;
+
+  border: 3px solid #1db954;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1rem, 2vw, 1.7rem);
+  cursor: pointer;
+}
+
+.song-search-error,
+.song-no-preview {
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  text-shadow: 2px 2px 0 black;
+}
+
+.song-search-error {
+  color: #ffadad;
+}
+
+.song-result {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.song-cover-frame {
+  aspect-ratio: 1;
+  border: 3px solid #1db954;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(18, 18, 18, 0.88);
+}
+
+.song-cover-frame img,
+.song-cover-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.song-cover-frame img {
+  object-fit: cover;
+  display: block;
+}
+
+.song-cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.song-result-details {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-shadow: 2px 2px 0 black;
+}
+
+.song-result-details h2,
+.song-result-details p {
+  margin: 0;
+}
+
+.song-result-details h2 {
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  line-height: 1;
+}
+
+.song-result-details p,
+.song-result-details a {
+  color: white;
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
+
+.song-result-details audio {
+  width: 100%;
+  max-width: 520px;
+}
+
+.song-artist {
+  color: #1db954;
+}
+
+@media (max-width: 760px) {
+  .song-search-panel {
+    min-height: 88vh;
+    padding: 3rem 2.5rem;
+  }
+
+  .song-search-top-row,
+  .song-search-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .song-search-back-button img {
+    width: min(46vw, 180px);
+  }
+
+  .song-result {
+    grid-template-columns: 1fr;
+  }
+}

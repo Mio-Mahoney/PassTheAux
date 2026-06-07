@@ -1,0 +1,266 @@
+.rating-screen {
+  width: 100vw;
+  min-height: 100vh;
+
+  background-image: url("/images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+  color: white;
+}
+
+.rating-panel {
+  width: min(92vw, 1120px);
+  min-height: min(86vh, 800px);
+
+  background-image: url("/images/BoxHorizontal.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: clamp(3rem, 6vw, 5rem) clamp(3rem, 7vw, 7rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rating-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rating-round-label,
+.rating-prompt {
+  margin: 0;
+  text-shadow: 3px 3px 0 black;
+}
+
+.rating-round-label {
+  color: #1db954;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.rating-prompt {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1;
+}
+
+.rating-back-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rating-back-button img {
+  width: min(22vw, 180px);
+  height: auto;
+  display: block;
+}
+
+.rating-content {
+  display: grid;
+  grid-template-columns: minmax(180px, 300px) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.rating-cover-frame {
+  aspect-ratio: 1;
+  border: 3px solid #1db954;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(18, 18, 18, 0.88);
+}
+
+.rating-cover-frame img,
+.rating-cover-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.rating-cover-frame img {
+  object-fit: cover;
+  display: block;
+}
+
+.rating-cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-details {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  text-shadow: 2px 2px 0 black;
+}
+
+.rating-details h2,
+.rating-details p {
+  margin: 0;
+}
+
+.rating-details h2 {
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  line-height: 1;
+}
+
+.rating-details p,
+.rating-details audio,
+.rating-meter,
+.rating-submit {
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
+
+.rating-artist,
+.rating-count,
+.rating-timer,
+.queue-status {
+  color: #1db954;
+}
+
+.rating-no-preview {
+  color: #ffdf8c;
+}
+
+.rating-details audio {
+  width: 100%;
+  max-width: 520px;
+}
+
+.rating-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rating-meter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rating-meter input {
+  width: 100%;
+  accent-color: #1db954;
+}
+
+.rating-submit {
+  width: fit-content;
+  padding: 0.6rem 1.2rem;
+
+  border: 3px solid white;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.rating-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.queue-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  text-shadow: 2px 2px 0 black;
+}
+
+.queue-panel h2,
+.queue-panel p {
+  margin: 0;
+}
+
+.queue-panel h2 {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.queue-search-form,
+.queue-song-card {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.queue-search-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.55rem 0.8rem;
+
+  border: 3px solid #1db954;
+  border-radius: 8px;
+  background: rgba(18, 18, 18, 0.9);
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.queue-search-form button,
+.queue-song-card button {
+  padding: 0.55rem 0.9rem;
+
+  border: 3px solid white;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+  cursor: pointer;
+}
+
+.queue-search-form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.queue-song-card {
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.queue-error {
+  color: #ffadad;
+}
+
+@media (max-width: 760px) {
+  .rating-panel {
+    min-height: 88vh;
+    padding: 3rem 2.5rem;
+  }
+
+  .rating-top-row {
+    flex-direction: column;
+  }
+
+  .rating-back-button img {
+    width: min(46vw, 180px);
+  }
+
+  .rating-content {
+    grid-template-columns: 1fr;
+  }
+
+  .queue-search-form,
+  .queue-song-card {
+    flex-direction: column;
+  }
+}
