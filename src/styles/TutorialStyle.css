@@ -1,6 +1,8 @@
 .tutorial-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   background-image: url("/images/Background.png");
   background-size: cover;
   background-position: center;
@@ -11,6 +13,8 @@
   justify-content: center;
 
   font-family: "Sweetpaint", Arial, sans-serif;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
 .tutorial-content {
@@ -93,4 +97,40 @@
 
 .tutorial-back-button:active {
   transform: scale(0.96);
+}
+
+@media (max-width: 700px) {
+  .tutorial-content {
+    width: min(94vw, 520px);
+    min-height: 30rem;
+    height: auto;
+    padding: 3rem 2.25rem;
+  }
+
+  .tutorial-inner {
+    width: 86%;
+    height: auto;
+    gap: 0.8rem;
+  }
+
+  .tutorial-title {
+    margin-bottom: 0.2rem;
+    font-size: clamp(2rem, 12vw, 3.1rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .tutorial-box {
+    font-size: clamp(1rem, 5.2vw, 1.3rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  .tutorial-back-button {
+    margin-top: 0;
+  }
+
+  .tutorial-back-button img {
+    width: min(58vw, 190px);
+  }
 }

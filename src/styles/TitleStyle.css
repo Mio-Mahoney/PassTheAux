@@ -7,7 +7,8 @@ src: url("../assets/fonts/Sweetpaint.ttf") format("truetype");
 
 .title-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   background-image: url("/images/Background.png");
   background-size: cover;
   background-position: center;
@@ -46,6 +47,27 @@ src: url("../assets/fonts/Sweetpaint.ttf") format("truetype");
   letter-spacing: 2px;
   text-shadow: 3px 3px 0px black;
   animation: pulseText 3.4s infinite ease-in-out;
+}
+
+@media (max-width: 640px) {
+  .title-top-half {
+    height: 68%;
+  }
+
+  .title-bottom-half {
+    height: 32%;
+    padding: 0 1.25rem 2rem;
+  }
+
+  .title-logo {
+    width: min(90vw, 430px);
+    max-height: 54vh;
+  }
+
+  .press-enter-text {
+    font-size: clamp(1.55rem, 9vw, 2.6rem);
+    letter-spacing: 0;
+  }
 }
 
 @keyframes pulseText {

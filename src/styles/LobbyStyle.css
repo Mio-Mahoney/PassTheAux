@@ -1,6 +1,8 @@
 .lobby-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
 
   background-image: url("/images/Background.png");
   background-size: cover;
@@ -13,6 +15,8 @@
 
   font-family: "Sweetpaint", Arial, sans-serif;
   color: white;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
 .lobby-content {
@@ -101,4 +105,54 @@
 .lobby-buttons button:hover {
   background: white;
   color: black;
+}
+
+@media (max-width: 720px) {
+  .lobby-content {
+    width: min(94vw, 520px);
+    min-height: 0;
+    padding: 3rem 2.5rem;
+  }
+
+  .lobby-title {
+    font-size: clamp(2.3rem, 13vw, 3.4rem);
+  }
+
+  .lobby-code {
+    margin: 0.5rem 0;
+    font-size: clamp(1.45rem, 8vw, 2.25rem);
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .lobby-count {
+    margin-bottom: 0.55rem;
+    font-size: clamp(1.05rem, 5.4vw, 1.45rem);
+  }
+
+  .lobby-player-list {
+    max-height: 34dvh;
+    overflow-y: auto;
+    gap: 0.5rem;
+  }
+
+  .lobby-player-card {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 0.55rem 0.8rem;
+    font-size: clamp(1rem, 5.8vw, 1.35rem);
+  }
+
+  .lobby-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .lobby-buttons button {
+    flex: 1 1 8rem;
+    padding: 0.65rem 0.85rem;
+    font-size: clamp(1rem, 5.5vw, 1.3rem);
+  }
 }

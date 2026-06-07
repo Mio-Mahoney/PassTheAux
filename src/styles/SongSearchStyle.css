@@ -1,6 +1,8 @@
 .song-search-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
 
   background-image: url("/images/Background.png");
   background-size: cover;
@@ -13,6 +15,8 @@
 
   font-family: "Sweetpaint", Arial, sans-serif;
   color: white;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
 .song-search-panel {
@@ -194,9 +198,15 @@
 }
 
 @media (max-width: 760px) {
+  .song-search-screen {
+    align-items: flex-start;
+  }
+
   .song-search-panel {
-    min-height: 88vh;
-    padding: 3rem 2.5rem;
+    width: min(94vw, 560px);
+    min-height: 0;
+    padding: 3rem 2.25rem;
+    gap: 0.8rem;
   }
 
   .song-search-top-row,
@@ -206,10 +216,45 @@
   }
 
   .song-search-back-button img {
-    width: min(46vw, 180px);
+    width: min(42vw, 150px);
   }
 
   .song-result {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .song-cover-frame {
+    width: min(64vw, 220px);
+    justify-self: center;
+  }
+
+  .song-result-details {
+    align-items: flex-start;
+  }
+
+  .song-result-details audio {
+    max-width: 100%;
+  }
+
+  .song-search-title {
+    font-size: clamp(2.2rem, 13vw, 3.4rem);
+  }
+
+  .song-search-prompt {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .song-search-panel {
+    padding: 2.6rem 1.8rem;
+  }
+
+  .song-search-input,
+  .song-search-prompt,
+  .song-search-submit,
+  .song-search-start-round {
+    font-size: clamp(1rem, 6vw, 1.35rem);
   }
 }

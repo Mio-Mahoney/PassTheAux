@@ -1,6 +1,7 @@
 .menu-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   background-image: url("/images/Background.png");
   background-size: cover;
   background-position: center;
@@ -49,4 +50,29 @@
 
 .join-button img {
   width: min(60vw, 560px);
+}
+
+@media (max-width: 640px) {
+  .menu-screen {
+    padding: 2rem 1rem;
+  }
+
+  .menu-button-column {
+    width: min(92vw, 420px);
+    height: auto;
+    min-height: 72dvh;
+    grid-template-rows: repeat(3, auto);
+    align-content: center;
+    gap: 0.4rem;
+  }
+
+  .image-menu-button {
+    margin: -1.6rem 0;
+    min-height: 8rem;
+  }
+
+  .image-menu-button img,
+  .join-button img {
+    width: min(86vw, 390px);
+  }
 }

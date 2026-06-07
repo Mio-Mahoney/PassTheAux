@@ -21,7 +21,12 @@ function TitleScreen({ onStart }: TitleScreenProps) {
   }, [onStart]);
 
   return (
-    <div className="title-screen">
+    <div
+      className="title-screen"
+      role="button"
+      tabIndex={0}
+      onClick={onStart}
+    >
       <div className="title-top-half">
         <img
           className="title-logo"
@@ -31,7 +36,7 @@ function TitleScreen({ onStart }: TitleScreenProps) {
       </div>
 
       <div className="title-bottom-half">
-        <p className="press-enter-text">Press enter to continue</p>
+        <p className="press-enter-text">Press enter or tap to continue</p>
       </div>
     </div>
   );
