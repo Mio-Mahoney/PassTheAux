@@ -35,7 +35,7 @@ type Screen =
   | "final-results";
 
 const MAX_PLAYERS = 8;
-const SONG_TIMER_SECONDS = 30;
+const SONG_TIMER_SECONDS = 60;
 const MENU_MUSIC_SRC = "/audio/nightvision.mp3";
 
 function createId() {
