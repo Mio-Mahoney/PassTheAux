@@ -1,0 +1,102 @@
+.hotseat-waiting-screen {
+  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
+
+  background-image: url("/images/Background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Sweetpaint", Arial, sans-serif;
+  color: white;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.hotseat-waiting-content {
+  position: relative;
+  width: min(90vw, 1100px);
+  min-height: min(75vh, 650px);
+
+  background-image: url("/images/BoxHorizontal.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 6rem 7rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hotseat-waiting-back {
+  position: absolute;
+  top: 4rem;
+  right: 7rem;
+
+  border: 0;
+  background: url("/images/Back.png") center / contain no-repeat;
+  color: transparent;
+  width: clamp(7rem, 12vw, 11rem);
+  aspect-ratio: 2.5 / 1;
+  cursor: pointer;
+}
+
+.hotseat-waiting-kicker {
+  margin: 0;
+  color: #1db954;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 0.9;
+  text-shadow: 3px 3px 0 black;
+}
+
+.hotseat-waiting-title {
+  max-width: 800px;
+  margin: 0;
+  font-size: clamp(3.3rem, 7vw, 6.5rem);
+  line-height: 0.9;
+  text-shadow: 4px 4px 0 black;
+}
+
+.hotseat-waiting-subtitle {
+  margin: 0;
+  color: #1db954;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  line-height: 1;
+  text-shadow: 3px 3px 0 black;
+}
+
+@media (max-width: 720px) {
+  .hotseat-waiting-content {
+    width: min(94vw, 520px);
+    min-height: min(78dvh, 640px);
+    padding: 5.5rem 2.5rem 3.5rem;
+  }
+
+  .hotseat-waiting-back {
+    top: 2.5rem;
+    right: 2.6rem;
+    width: clamp(6rem, 28vw, 8rem);
+  }
+
+  .hotseat-waiting-kicker {
+    font-size: clamp(1.65rem, 9vw, 2.35rem);
+  }
+
+  .hotseat-waiting-title {
+    max-width: 100%;
+    font-size: clamp(2.45rem, 13vw, 4rem);
+  }
+
+  .hotseat-waiting-subtitle {
+    font-size: clamp(1.35rem, 7vw, 2rem);
+  }
+}

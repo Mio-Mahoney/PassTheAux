@@ -36,6 +36,7 @@ import {
 // Import all reducer arg schemas
 import AddReducer from "./add_reducer";
 import AdvanceRoundReducer from "./advance_round_reducer";
+import BeginRoundSetupReducer from "./begin_round_setup_reducer";
 import CreateRoomReducer from "./create_room_reducer";
 import JoinRoomReducer from "./join_room_reducer";
 import LeaveRoomReducer from "./leave_room_reducer";
@@ -164,6 +165,7 @@ const tablesSchema = __schema({
 const reducersSchema = __reducers(
   __reducerSchema("add", AddReducer),
   __reducerSchema("advance_round", AdvanceRoundReducer),
+  __reducerSchema("begin_round_setup", BeginRoundSetupReducer),
   __reducerSchema("create_room", CreateRoomReducer),
   __reducerSchema("join_room", JoinRoomReducer),
   __reducerSchema("leave_room", LeaveRoomReducer),

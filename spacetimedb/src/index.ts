@@ -286,6 +286,28 @@ export const leaveRoom = spacetimedb.reducer(
   }
 );
 
+export const beginRoundSetup = spacetimedb.reducer(
+  {
+    playerId: t.string(),
+  },
+  (ctx, { playerId }) => {
+    const { player, room } = requirePlayerRoom(ctx, playerId);
+
+    if (!player.isHotseat) {
+      throw new SenderError('Only the hotseat player can choose the prompt.');
+    }
+
+    if (room.status === 'playing' || room.status === 'finished') {
+      throw new SenderError('The game is not ready for a new prompt.');
+    }
+
+    ctx.db.room.id.update({
+      ...room,
+      status: 'choosing',
+    });
+  }
+);
+
 export const startRound = spacetimedb.reducer(
   {
     playerId: t.string(),

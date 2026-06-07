@@ -8,6 +8,7 @@ import { type Infer as __Infer } from "spacetimedb";
 // Import all reducer arg schemas
 import AddReducer from "../add_reducer";
 import AdvanceRoundReducer from "../advance_round_reducer";
+import BeginRoundSetupReducer from "../begin_round_setup_reducer";
 import CreateRoomReducer from "../create_room_reducer";
 import JoinRoomReducer from "../join_room_reducer";
 import LeaveRoomReducer from "../leave_room_reducer";
@@ -19,6 +20,7 @@ import SubmitRatingReducer from "../submit_rating_reducer";
 
 export type AddParams = __Infer<typeof AddReducer>;
 export type AdvanceRoundParams = __Infer<typeof AdvanceRoundReducer>;
+export type BeginRoundSetupParams = __Infer<typeof BeginRoundSetupReducer>;
 export type CreateRoomParams = __Infer<typeof CreateRoomReducer>;
 export type JoinRoomParams = __Infer<typeof JoinRoomReducer>;
 export type LeaveRoomParams = __Infer<typeof LeaveRoomReducer>;

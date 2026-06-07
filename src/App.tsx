@@ -8,6 +8,7 @@ import TutorialScreen from "./screens/TutorialScreen";
 import ModeSelectionScreen from "./screens/ModeSelectionScreen";
 import LobbyScreen from "./screens/LobbyScreen";
 import JoinScreen from "./screens/JoinScreen";
+import HotseatWaitingScreen from "./screens/HotseatWaitingScreen";
 import SongSearchScreen from "./screens/SongSearchScreen";
 import RatingScreen from "./screens/RatingScreen";
 import LeaderboardScreen, {
@@ -29,6 +30,7 @@ type Screen =
   | "mode-selection"
   | "lobby"
   | "join"
+  | "hotseat-waiting"
   | "song-search"
   | "rating"
   | "round-results"
@@ -131,6 +133,7 @@ function App() {
   const joinRoomReducer = useSpacetimeReducer(reducers.joinRoom);
   const leaveRoomReducer = useSpacetimeReducer(reducers.leaveRoom);
   const setReadyReducer = useSpacetimeReducer(reducers.setReady);
+  const beginRoundSetupReducer = useSpacetimeReducer(reducers.beginRoundSetup);
   const startRoundReducer = useSpacetimeReducer(reducers.startRound);
   const submitRatingReducer = useSpacetimeReducer(reducers.submitRating);
   const submitQueuedSongReducer = useSpacetimeReducer(reducers.submitQueuedSong);
@@ -160,6 +163,8 @@ function App() {
     : null;
   const currentPlayer =
     room?.players.find((player) => player.id === currentPlayerId) ?? null;
+  const hotseatPlayer =
+    room?.players.find((player) => player.is_hotseat) ?? null;
   const roomRounds = useMemo(
     () =>
       spacetimeRounds
@@ -251,6 +256,26 @@ function App() {
       return;
     }
 
+    if (room?.status === "choosing") {
+      if (
+        currentPlayer?.is_hotseat &&
+        currentScreen !== "song-search" &&
+        currentScreen !== "rating"
+      ) {
+        setCurrentScreen("song-search");
+        return;
+      }
+
+      if (
+        !currentPlayer?.is_hotseat &&
+        currentScreen !== "hotseat-waiting" &&
+        currentScreen !== "rating"
+      ) {
+        setCurrentScreen("hotseat-waiting");
+        return;
+      }
+    }
+
     if (room?.status === "round-results" && currentScreen !== "song-search") {
       setCurrentScreen("round-results");
       return;
@@ -258,11 +283,14 @@ function App() {
 
     if (
       activeRound &&
-      (currentScreen === "lobby" || currentScreen === "round-results")
+      (currentScreen === "lobby" ||
+        currentScreen === "round-results" ||
+        currentScreen === "hotseat-waiting" ||
+        currentScreen === "song-search")
     ) {
       setCurrentScreen("rating");
     }
-  }, [activeRound, currentScreen, room?.status]);
+  }, [activeRound, currentPlayer?.is_hotseat, currentScreen, room?.status]);
 
   useEffect(() => {
     if (
@@ -408,8 +436,30 @@ function App() {
     }
   }
 
-  function handleStartGame() {
-    setCurrentScreen("song-search");
+  async function handleStartGame() {
+    if (!currentPlayer) {
+      return;
+    }
+
+    try {
+      const beginRoundSetupPromise = beginRoundSetupReducer({
+        playerId: currentPlayer.id,
+      });
+
+      setCurrentScreen(
+        currentPlayer.is_hotseat ? "song-search" : "hotseat-waiting",
+      );
+
+      await beginRoundSetupPromise;
+    } catch (error) {
+      console.error(error);
+      setCurrentScreen("lobby");
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Could not start hotseat setup.",
+      );
+    }
   }
 
   async function handleSubmitHotseatSong(song: Song, prompt: string) {
@@ -511,6 +561,7 @@ function App() {
     currentScreen === "tutorial" ||
     currentScreen === "mode-selection" ||
     currentScreen === "join" ||
+    currentScreen === "hotseat-waiting" ||
     currentScreen === "round-results" ||
     currentScreen === "final-results" ||
     (currentScreen === "lobby" && (!room || room.status === "lobby"));
@@ -547,6 +598,14 @@ function App() {
         <JoinScreen
           onJoinLobby={handleJoinLobby}
           onBack={() => setCurrentScreen("menu")}
+        />
+      )}
+
+      {currentScreen === "hotseat-waiting" && (
+        <HotseatWaitingScreen
+          hotseatName={hotseatPlayer?.name ?? "A player"}
+          isHotseatPlayer={Boolean(currentPlayer?.is_hotseat)}
+          onBack={handleLeaveLobby}
         />
       )}
 
@@ -601,7 +660,7 @@ function App() {
           players={room.players}
           currentPlayerIsHotseat={currentPlayer.is_hotseat}
           actionLabel="Next Round"
-          onAction={() => setCurrentScreen("song-search")}
+          onAction={() => void handleStartGame()}
           onBack={() => setCurrentScreen("lobby")}
         />
       )}
@@ -633,7 +692,7 @@ function App() {
           room={room}
           currentPlayer={currentPlayer}
           onReadyToggle={handleReadyToggle}
-          onStartGame={handleStartGame}
+          onStartGame={() => void handleStartGame()}
           onBack={handleLeaveLobby}
         />
       )}
