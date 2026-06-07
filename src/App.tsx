@@ -36,6 +36,7 @@ type Screen =
 
 const MAX_PLAYERS = 8;
 const SONG_TIMER_SECONDS = 30;
+const MENU_MUSIC_SRC = "/audio/nightvision.mp3";
 
 function createId() {
   if (globalThis.crypto?.randomUUID) {
@@ -66,6 +67,50 @@ function createId() {
 
 function createLobbyCode() {
   return Math.random().toString(36).slice(2, 8).toUpperCase();
+}
+
+function BackgroundMusic({ enabled }: { enabled: boolean }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [unlocked, setUnlocked] = useState(false);
+
+  useEffect(() => {
+    if (unlocked) {
+      return;
+    }
+
+    function unlockAudio() {
+      setUnlocked(true);
+    }
+
+    window.addEventListener("pointerdown", unlockAudio, { once: true });
+    window.addEventListener("keydown", unlockAudio, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+    };
+  }, [unlocked]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (!audio) {
+      return;
+    }
+
+    audio.volume = 0.28;
+
+    if (enabled && unlocked) {
+      void audio.play().catch(() => {
+        // Browsers can still block playback until a user gesture happens.
+      });
+      return;
+    }
+
+    audio.pause();
+  }, [enabled, unlocked]);
+
+  return <audio ref={audioRef} src={MENU_MUSIC_SRC} loop preload="auto" />;
 }
 
 function App() {
@@ -460,8 +505,20 @@ function App() {
     }
   }
 
+  const isBackgroundMusicScreen =
+    currentScreen === "title" ||
+    currentScreen === "menu" ||
+    currentScreen === "tutorial" ||
+    currentScreen === "mode-selection" ||
+    currentScreen === "join" ||
+    currentScreen === "round-results" ||
+    currentScreen === "final-results" ||
+    (currentScreen === "lobby" && (!room || room.status === "lobby"));
+
   return (
     <div className="app">
+      <BackgroundMusic enabled={isBackgroundMusicScreen} />
+
       {currentScreen === "title" && (
         <TitleScreen onStart={() => setCurrentScreen("menu")} />
       )}

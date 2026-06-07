@@ -111,7 +111,12 @@ function RatingScreen({
             <p className="rating-timer">Next song in {timerLabel}</p>
 
             {song.previewUrl ? (
-              <audio controls src={song.previewUrl} />
+              <audio
+                key={song.previewUrl}
+                controls
+                autoPlay
+                src={song.previewUrl}
+              />
             ) : (
               <p className="rating-no-preview">No Spotify preview available.</p>
             )}

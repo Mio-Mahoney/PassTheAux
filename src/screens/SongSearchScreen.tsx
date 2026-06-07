@@ -128,7 +128,12 @@ function SongSearchScreen({ onBack, onSubmitSong }: SongSearchScreenProps) {
               </p>
 
               {song.previewUrl ? (
-                <audio controls src={song.previewUrl} />
+                <audio
+                  key={song.previewUrl}
+                  controls
+                  autoPlay
+                  src={song.previewUrl}
+                />
               ) : (
                 <p className="song-no-preview">No Spotify preview available.</p>
               )}
