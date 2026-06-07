@@ -144,7 +144,7 @@ async function searchSpotifyTrack(
       body: {
         success: false,
         error:
-          "SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required in .env.local.",
+          "SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET must be set in the server environment.",
       },
     };
   }
