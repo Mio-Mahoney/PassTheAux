@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import "../styles/SongSearchStyle.css";
-import type { Song, SongSearchResponse } from "../types/song";
+import type { Song } from "../types/song";
+import { searchSong as fetchSongSearch } from "../lib/songSearch";
 
 type SongSearchScreenProps = {
   onBack: () => void;
@@ -39,10 +40,7 @@ function SongSearchScreen({ onBack, onSubmitSong }: SongSearchScreenProps) {
     setSong(null);
 
     try {
-      const response = await fetch(
-        `/api/search?q=${encodeURIComponent(cleanQuery)}`,
-      );
-      const data = (await response.json()) as SongSearchResponse;
+      const data = await fetchSongSearch(cleanQuery);
 
       if (!data.success || !data.song) {
         setError(data.error ?? "Could not find that song.");

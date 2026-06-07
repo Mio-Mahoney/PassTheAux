@@ -17,6 +17,14 @@ Features
 - Rate submissions and see a live leaderboard.
 - Per-room chat and quick reactions (optional enhancements).
 
+Deployment
+
+- Host the frontend on Vercel, GitHub Pages, or any static host.
+- Use a real backend for song search; this repo includes a Vercel-compatible `/api/search` function in `api/search.ts`.
+- Keep SpacetimeDB on maincloud for rooms, players, rounds, and ratings.
+- Set `VITE_SPACETIMEDB_HOST`, `VITE_SPACETIMEDB_DB_NAME`, `SPOTIFY_CLIENT_ID`, and `SPOTIFY_CLIENT_SECRET` in the deployment environment.
+- If the frontend is not served from the same origin as `/api/search`, set `VITE_SONG_SEARCH_API_BASE` to the full API URL.
+
 Quick start
 
 Prerequisites
